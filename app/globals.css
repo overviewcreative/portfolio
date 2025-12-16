@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --color-dark: #1a2332;
+    --color-light: #f5f3f0;
+    --color-dark-section: #0f1419;
+    --color-warm-light: #faf8f5;
+    --color-accent-orange: #d97760;
+    --color-accent-blue: #5ba3d0;
+    --color-accent-green: #3a8b6f;
+  }
+
+  body {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    line-height: 1.6;
+    position: relative;
+    font-weight: 400;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' result='noise' seed='2'/%3E%3C/filter%3E%3Crect width='500' height='500' fill='%23000' filter='url(%23noise)' opacity='0.008'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    z-index: -1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--color-dark);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .container-custom {
+    @apply mx-auto px-6 sm:px-8 lg:px-12;
+    max-width: 1200px;
+  }
+
+  .border-thick {
+    @apply border-0;
+  }
+
+  .text-brutalist {
+    @apply text-base leading-relaxed;
+  }
+
+  .block-raw {
+    border: 1px solid rgba(26, 35, 50, 0.1);
+    background-color: var(--color-light);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(26, 35, 50, 0.06);
+  }
+
+  /* Micro-interactions */
+  @keyframes slideInUnderline {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes floatUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-2px);
+    }
+  }
+
+  .hover-lift {
+    transition: all 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(26, 35, 50, 0.12);
+  }
+
+  .hover-scale {
+    transition: all 0.3s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.03);
+  }
+
+  .accent-spin {
+    transition: opacity 0.3s ease;
+  }
+
+  .accent-spin:hover {
+    opacity: 0.85;
+  }
+
+  /* Film grain overlay */
+  @keyframes grain {
+    0%, 100% {
+      background-position: 0 0;
+    }
+    10% {
+      background-position: -60px -60px;
+    }
+    20% {
+      background-position: -120px 10px;
+    }
+    30% {
+      background-position: 130px -40px;
+    }
+    40% {
+      background-position: -90px 100px;
+    }
+    50% {
+      background-position: -130px 50px;
+    }
+    60% {
+      background-position: 70px -30px;
+    }
+    70% {
+      background-position: 100px 100px;
+    }
+    80% {
+      background-position: -100px -100px;
+    }
+    90% {
+      background-position: 50px -50px;
+    }
+  }
+
+  .film-grain {
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grainFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' seed='1'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1.5' /%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23000' filter='url(%23grainFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 400px 400px;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  /* Dark section styling with bold gradient and vintage space photography */
+  .section-dark {
+    background: 
+      /* Main gradient overlays */
+      linear-gradient(135deg, rgba(30, 50, 90, 0.65) 0%, rgba(80, 40, 120, 0.55) 40%, rgba(20, 30, 60, 0.65) 100%),
+      linear-gradient(to bottom, rgba(60, 100, 150, 0.35) 0%, transparent 50%, rgba(40, 20, 80, 0.25) 100%),
+      linear-gradient(45deg, rgba(100, 60, 140, 0.3) 0%, rgba(30, 70, 100, 0.4) 100%),
+      /* Vintage space photograph backgrounds - rotating selection */
+      url('https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=1600&h=900&fit=crop') center/cover fixed,
+      url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1600&h=900&fit=crop') center/cover fixed,
+      url('https://images.unsplash.com/photo-1462332420958-a05d1e7413413?w=1600&h=900&fit=crop') center/cover fixed,
+      url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1600&h=900&fit=crop') center/cover fixed;
+    background-blend-mode: multiply, screen, overlay, darken, multiply, overlay, screen;
+    color: var(--color-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='darkNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' result='noise' seed='2'/%3E%3C/filter%3E%3Crect width='500' height='500' fill='%23fff' filter='url(%23darkNoise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    pointer-events: none;
+  }
+
+  .section-dark > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Warm light variant */
+  .section-warm {
+    background-color: var(--color-warm-light);
+    color: var(--color-dark);
+  }
+
+  /* Color utilities */
+  .bg-dark {
+    background-color: var(--color-dark);
+  }
+
+  .bg-light {
+    background-color: var(--color-light);
+  }
+
+  .text-dark {
+    color: var(--color-dark);
+  }
+
+  .text-light {
+    color: var(--color-light);
+  }
+
+  .border-dark {
+    border-color: var(--color-dark);
+  }
+
+  .text-orange {
+    color: var(--color-accent-orange);
+  }
+
+  .text-blue {
+    color: var(--color-accent-blue);
+  }
+
+  .text-green {
+    color: var(--color-accent-green);
+  }
+
+  .bg-orange {
+    background-color: var(--color-accent-orange);
+  }
+
+  .bg-blue {
+    background-color: var(--color-accent-blue);
+  }
+
+  .bg-green {
+    background-color: var(--color-accent-green);
+  }
+
+  .border-orange {
+    border-color: var(--color-accent-orange);
+  }
+
+  .border-blue {
+    border-color: var(--color-accent-blue);
+  }
+
+  .border-green {
+    border-color: var(--color-accent-green);
+  }
+
+  /* Accent color utilities */
+  .accent-circle {
+    border-radius: 9999px;
+    background: var(--color-accent-orange);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .accent-diamond {
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-accent-orange);
+    transform: rotate(45deg);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .accent-line {
+    position: absolute;
+    pointer-events: none;
+    background: var(--color-accent-orange);
+  }
+
+  .hover-accent:hover {
+    background-color: var(--color-accent-orange);
+    color: var(--color-light);
+  }
+}
+
+
+
