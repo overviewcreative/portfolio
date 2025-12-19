@@ -11,15 +11,15 @@ export function Button({
   size = 'md',
   ...props
 }: ButtonProps) {
-  const baseStyles = 'font-mono font-bold tracking-wider uppercase border-2 transition-all relative hover:scale-105 hover:-translate-y-0.5 active:scale-95 active:-translate-y-px';
+  const baseStyles = 'font-poppins font-bold tracking-tight transition-all relative hover:scale-105 backdrop-blur-sm transparent rounded-lg hover:-translate-y-0.5 active:scale-95 active:-translate-y-px';
   
   const variantStyles = {
-    primary: 'bg-dark text-light border-dark hover:bg-light hover:text-dark',
-    secondary: 'bg-light text-dark border-dark hover:bg-dark hover:text-light',
-    outline: 'bg-light text-dark border-dark hover:bg-dark hover:text-light',
-    accent: 'text-light border-orange-600 hover:border-orange-500',
-    blue: 'text-light border-blue-600 hover:border-blue-500',
-    green: 'text-light border-green-600 hover:border-green-500',
+    primary: 'bg-dark text-light hover:bg-light hover:text-dark',
+    secondary: 'bg-light text-dark hover:bg-dark hover:text-light',
+    outline: 'bg-light text-dark hover:bg-dark hover:text-light',
+    accent: 'text-light hover:opacity-90',
+    blue: 'text-light hover:opacity-90',
+    green: 'text-light hover:opacity-90',
   };
 
   const sizeStyles = {
@@ -29,8 +29,24 @@ export function Button({
   };
 
   return (
+    <><style>{`     
+        @keyframes shimmer {
+          0% { left: -100%; }
+          100% { left: 100%; }
+        }
+        .button-sheen:hover::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: shimmer 2s infinite;
+        }
+      `}</style>
     <button
-      className={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}
+      className={cn(baseStyles, variantStyles[variant], sizeStyles[size], className, 'button-sheen')}
       style={
         variant === 'accent' ? {backgroundColor: 'var(--color-accent-orange)', borderColor: 'var(--color-accent-orange)'} :
         variant === 'blue' ? {backgroundColor: 'var(--color-accent-blue)', borderColor: 'var(--color-accent-blue)'} :
@@ -39,5 +55,6 @@ export function Button({
       }
       {...props}
     />
+    </>
   );
 }

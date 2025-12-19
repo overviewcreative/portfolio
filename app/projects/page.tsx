@@ -45,7 +45,7 @@ export default async function ProjectsPage() {
 
   return (
     <div className="min-h-screen section-dark">
-      <div className="container-custom py-16 border-b relative z-10" style={{borderColor: 'rgba(255, 255, 255, 0.2)'}}>
+      <div className="container-custom py-16 relative z-10" style={{}}>
         <div className="flex items-baseline gap-4 mb-4">
           <div className="w-3 h-3" style={{backgroundColor: 'var(--color-accent-green)'}}></div>
           <h1 className="text-6xl font-semibold" style={{fontFamily: "'Fraunces', serif", color: 'var(--color-light)'}}>Projects</h1>
@@ -64,7 +64,7 @@ export default async function ProjectsPage() {
               const accentColor = accentColorMap[project.accent_color];
               return (
                 <Link key={project.id} href={`/projects/${project.slug}`}>
-                  <div className="border rounded-lg overflow-hidden relative group transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,0.3)'}}>
+                  <div className="rounded-2xl overflow-hidden relative group transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full flex flex-col" style={{backgroundColor: 'rgba(255,255,255,0.18)'}}>
                     {/* Featured Image */}
                   <div className="relative w-full h-48 overflow-hidden bg-dark">
                     <img
@@ -84,7 +84,7 @@ export default async function ProjectsPage() {
                     </p>
                     <div className="flex gap-2 flex-wrap">
                       {project.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1 border text-xs font-medium rounded transition-all duration-300 hover:scale-110" style={{borderColor: accentColor, color: accentColor}}>
+                        <span key={tag} className="px-3 py-1 text-xs font-medium rounded-full transition-all duration-300 hover:scale-110" style={{backgroundColor: accentColor, color: 'var(--color-light)'}}>
                           {tag}
                         </span>
                       ))}

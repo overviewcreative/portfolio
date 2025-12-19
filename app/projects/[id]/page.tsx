@@ -102,7 +102,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <main>
       {/* Header Section */}
-      <section className="py-8 border-b section-warm relative z-10" style={{borderColor: 'rgba(26, 35, 50, 0.1)'}}>
+      <section className="py-8 section-warm relative z-10" style={{}}>
         <div className="container-custom">
           <Link href="/projects" className="text-sm mb-6 inline-block underline hover:no-underline transition-colors duration-300" style={{color: 'var(--color-accent-blue)'}}>
             ← Back to Projects
@@ -118,7 +118,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </p>
           <div className="flex gap-2 flex-wrap mt-6">
             {project.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 border text-xs font-medium rounded" style={{borderColor: accentColor, color: accentColor}}>
+              <span key={tag} className="px-3 py-1 text-xs font-medium rounded-full" style={{backgroundColor: accentColor, color: 'var(--color-light)'}}>
                 {tag}
               </span>
             ))}
@@ -127,7 +127,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Hero Image */}
-      <section className="relative w-full h-96 overflow-hidden border-b z-10" style={{borderColor: 'rgba(26, 35, 50, 0.1)'}}>
+      <section className="relative w-full h-96 overflow-hidden z-10" style={{}}>
         <img
           src={project.featured_image_url}
           alt={project.featured_image_alt}
@@ -150,8 +150,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               {project.quick_facts.map((fact, idx) => (
                 <div
                   key={idx}
-                  className="border p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-                  style={{backgroundColor: 'rgba(26, 35, 50, 0.02)', borderColor: 'rgba(26, 35, 50, 0.1)'}}
+                  className="p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                  style={{backgroundColor: 'var(--color-light)'}}
                 >
                   <p className="text-xs font-semibold mb-3" style={{color: accentColor}}>
                     {fact.label}
@@ -165,7 +165,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         {/* Challenge Section */}
-        <div className="mb-20 border-l-2 pl-6" style={{borderColor: accentColor}}>
+        <div className="mb-20 pl-6" style={{}}>
           <h2 className="text-3xl font-semibold mb-6" style={{fontFamily: "'Fraunces', serif", color: 'var(--color-dark)'}}>
             Challenge
           </h2>
@@ -180,7 +180,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <section className="section-dark relative z-10">
         <div className="container-custom py-16">
         {/* Approach Section */}
-        <div className="mb-20 border-l-2 pl-6" style={{borderColor: accentColor}}>
+        <div className="mb-20 pl-6" style={{}}>
           <h2 className="text-3xl font-semibold mb-6" style={{fontFamily: "'Fraunces', serif", color: 'var(--color-light)'}}>
             Approach
           </h2>
@@ -205,17 +205,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             Before & After
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="border p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-md" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,0.3)'}}>
+            <div className="p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-md" style={{backgroundColor: 'rgba(255,255,255,0.18)'}}>
               <p className="font-semibold text-sm mb-4" style={{color: 'var(--color-light)'}}>Before</p>
-              <div className="h-64 border flex items-center justify-center" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,0.3)', borderStyle: 'dashed', borderRadius: '0.5rem'}}>
+              <div className="h-64 flex items-center justify-center rounded-lg" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderStyle: 'dashed', borderWidth: '1px', borderColor: 'rgba(255,255,255,0.3)'}}>
                 <p className="text-xs text-center" style={{color: 'var(--color-light)'}}>
                   Image Placeholder<br/>1200 x 600
                 </p>
               </div>
             </div>
-            <div className="border p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-md" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,0.3)'}}>
+            <div className="p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-md" style={{backgroundColor: 'rgba(255,255,255,0.18)'}}>
               <p className="font-semibold text-sm mb-4" style={{color: 'var(--color-light)'}}>After</p>
-              <div className="h-64 border flex items-center justify-center" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderColor: 'rgba(255,255,255,0.3)', borderStyle: 'dashed', borderRadius: '0.5rem'}}>
+              <div className="h-64 flex items-center justify-center rounded-lg" style={{backgroundColor: 'rgba(255,255,255,0.18)', borderStyle: 'dashed', borderWidth: '1px', borderColor: 'rgba(255,255,255,0.3)'}}>
                 <p className="text-xs text-center" style={{color: 'var(--color-light)'}}>
                   Image Placeholder<br/>1200 x 600
                 </p>
@@ -236,7 +236,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <div className="w-3 h-3" style={{backgroundColor: accentColor}}></div>
               Video
             </h2>
-            <div className="relative w-full pb-[56.25%] h-0 overflow-hidden border rounded-lg" style={{borderColor: 'rgba(26, 35, 50, 0.1)'}}>
+            <div className="relative w-full pb-[56.25%] h-0 overflow-hidden rounded-lg" style={{}}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
                 src={project.video_embed_url}
@@ -264,8 +264,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 return (
                   <div
                     key={idx}
-                    className={`${colSpan} ${rowSpan} border overflow-hidden transition-all duration-300 hover:-translate-y-1 group relative rounded-lg`}
-                    style={{backgroundColor: 'white', borderColor: 'rgba(26, 35, 50, 0.1)'}}
+                    className={`${colSpan} ${rowSpan} overflow-hidden transition-all duration-300 hover:-translate-y-1 group relative rounded-2xl`}
+                    style={{backgroundColor: 'white'}}
                   >
                     <img
                       src={item.url}
@@ -290,7 +290,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Resources & Navigation - Dark section */}
-      <section className="section-dark border-t relative z-10" style={{borderColor: 'rgba(255, 255, 255, 0.2)'}}>
+      <section className="section-dark relative z-10" style={{}}>
         <div className="container-custom py-16">
         {/* Links Section */}
         <div className="mb-20">
@@ -303,8 +303,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <a
                 key={idx}
                 href={link.url}
-                className="border px-6 py-3 font-semibold text-sm rounded transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
-                style={{borderColor: accentColor, color: accentColor}}
+                className="px-6 py-3 font-semibold text-sm rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-0.5"
+                style={{backgroundColor: accentColor, color: 'var(--color-light)'}}
               >
                 {link.label}
               </a>
@@ -313,7 +313,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         {/* Navigation */}
-        <div className="border-t pt-12" style={{borderColor: 'rgba(255, 255, 255, 0.2)'}}>
+        <div className="pt-12" style={{}}>
           <div className="flex justify-between items-center">
             <Link href="/projects">
               <Button variant="outline">Back to Projects</Button>
